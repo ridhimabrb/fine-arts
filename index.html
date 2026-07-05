@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fine Arts</title>
+<meta name="description" content="A running archive of blogs on finance, markets, and fintech. By Ridhima Pant" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="utility-bar">
+  <div class="wrap">
+    <button aria-current="true">Reading list</button>
+    <button onclick="location.href='articles.html'">Full archive</button>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="wordmark">Fine Arts<span> Finance Articles for you ;)</span></a>
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="articles.html">Archive</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#subscribe">Get new posts</a>
+    </nav>
+    <div class="header-ctas">
+      <a class="pill pill-outline" href="index.html#about">About this project</a>
+      <a class="pill pill-filled" href="articles.html">Read the archive</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">By- Ridhima Pant</p>
+      <h1 class="display">A running archive of blogs on finance, markets, trading, fintech and more</h1>
+      <p class="lead">Long-form essays on valuation, market mechanics, and technical stuff behind it. Written to understand the material well enough to explain it plainly, one article at a time.</p>
+      <div class="hero-ctas">
+        <a class="pill pill-filled" href="articles.html">Browse the archive</a>
+        <a class="pill pill-outline-onlight" href="index.html#about">Why this exists</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="floorGlow" cx="50%" cy="78%" r="55%">
+            <stop offset="0%" stop-color="#faf8f5" stop-opacity="0.18"/>
+            <stop offset="100%" stop-color="#faf8f5" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <ellipse cx="230" cy="400" rx="170" ry="26" fill="url(#floorGlow)"/>
+
+        <!-- stacked card forms -->
+        <g opacity="0.95">
+          <rect x="120" y="255" width="190" height="120" rx="18" fill="#efe6da" transform="rotate(-6 215 315)"/>
+          <rect x="132" y="235" width="190" height="120" rx="18" fill="#c17a52" transform="rotate(3 227 295)"/>
+          <rect x="108" y="215" width="190" height="120" rx="18" fill="#f6f2ea" transform="rotate(-2 203 275)"/>
+        </g>
+
+        <!-- twisted ribbon -->
+        <path d="M 80 190 C 140 120, 260 250, 330 150 C 380 85, 300 40, 250 80 C 210 112, 260 150, 310 130"
+              fill="none" stroke="#8a9a7e" stroke-width="34" stroke-linecap="round" opacity="0.92"/>
+        <path d="M 80 190 C 140 120, 260 250, 330 150 C 380 85, 300 40, 250 80 C 210 112, 260 150, 310 130"
+              fill="none" stroke="#3a3525" stroke-width="34" stroke-linecap="round" opacity="0.12"/>
+
+        <circle cx="336" cy="118" r="14" fill="#faf8f5" opacity="0.9"/>
+        <circle cx="100" cy="205" r="9" fill="#c17a52" opacity="0.85"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head left">
+      <p class="eyebrow">What this archive covers</p>
+      <h2 class="heading">Three lenses on the same material</h2>
+    </div>
+    <div class="feature-row">
+      <div class="feature-col">
+        <h3>Markets</h3>
+        <p>How prices actually move: rates, curves, risk premia, and the mechanics behind the headlines everyone half-understands.</p>
+      </div>
+      <div class="feature-col">
+        <h3>Portfolio theory</h3>
+        <p>Valuation and allocation frameworks, rebuilt from first principles rather than repeated as formulas to memorize.</p>
+      </div>
+      <div class="feature-col">
+        <h3>Fintech &amp; policy</h3>
+        <p>Where financial products, regulation, and technology actually meet,  and where the marketing and the mechanics diverge.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-cream">
+  <div class="wrap">
+    <div class="section-head left">
+      <p class="eyebrow">Latest writing</p>
+      <h2 class="heading">Recent articles</h2>
+    </div>
+    <div id="latest-articles" class="article-list">
+      <div class="skeleton-line" style="width:60%"></div>
+      <div class="skeleton-line" style="width:40%"></div>
+      <div class="skeleton-line" style="width:50%"></div>
+    </div>
+    <div style="margin-top:32px;">
+      <a class="pill pill-outline" href="articles.html">View the full archive</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap section-split">
+    <div class="col-text">
+      <p class="eyebrow">About this project</p>
+      <h2 class="heading">Why I'm writing this down</h2>
+      <p class="lead">I'm studying finance and wanted a place to document the material properly; not flashcards, full essays, written the way I'd want a concept explained to me. Everything here is written by me, published as I go, mistakes included.</p>
+    </div>
+    <div class="soft-card" id="subscribe">
+      <p class="eyebrow" style="margin-bottom:8px;">Get new posts</p>
+      <h3 class="serif" style="font-size:28px;">New articles, straight to your inbox</h3>
+      <p class="muted" style="margin:12px 0 24px;">No spam, no schedule pressure — just an email when something new goes up.</p>
+      <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks, you are on the list';">
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <input type="email" required placeholder="you@email.com" style="flex:1; min-width:180px; padding:14px 20px; border-radius:100px; border:1px solid var(--color-stone); font-family:var(--font-the-future); font-size:15px; background:var(--color-paper-white);"/>
+          <button type="submit" class="pill pill-filled">Notify me</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="footer-copy">© 2026 Fine Arts. Written and maintained by hand.</span>
+    <nav class="footer-links">
+      <a href="articles.html">Archive</a>
+      <a href="index.html#about">About</a>
+      <a href="pantridhima2323@gmail.com">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+<button class="launcher" aria-label="Email me" onclick="location.href='pantridhima2323@gmail.com'">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6.5 12 13l9-6.5"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg>
+</button>
+
+<script src="js/site.js"></script>
+</body>
+</html>

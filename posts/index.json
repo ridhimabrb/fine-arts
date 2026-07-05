@@ -1,0 +1,47 @@
+[
+  {
+    "slug": "understanding-duration-risk",
+    "title": "Understanding Duration Risk in Bond Portfolios",
+    "excerpt": "Why a bond's price moves the way it does when rates shift, and why 'safe' fixed income isn't the same thing as 'stable' fixed income.",
+    "category": "Markets",
+    "date": "2026-07-02",
+    "readTime": "6 min read",
+    "file": "understanding-duration-risk.md"
+  },
+  {
+    "slug": "yield-curve-inversions",
+    "title": "What Yield Curve Inversions Are Actually Telling Us",
+    "excerpt": "The indicator gets cited every time recession fears spike. Here's what it measures, what it's missed before, and why it still matters.",
+    "category": "Markets",
+    "date": "2026-06-18",
+    "readTime": "7 min read",
+    "file": "yield-curve-inversions.md"
+  },
+  {
+    "slug": "dcf-valuation-primer",
+    "title": "A Non-Finance Student's Guide to DCF Valuation",
+    "excerpt": "Discounted cash flow modelling has a reputation for being intimidating. Broken into its four real questions, it isn't.",
+    "category": "Portfolio Theory",
+    "date": "2026-05-27",
+    "readTime": "8 min read",
+    "file": "dcf-valuation-primer.md"
+  },
+{
+  "slug": "why-fintech-needs-trust",
+  "title": "Why Fintech Needs Trust Before Innovation",
+  "excerpt": "Everyone wants the next disruptive finance app. Few companies realize trust is still the product.",
+  "category": "Fintech & Policy",
+  "date": "2026-04-21",
+  "readTime": "7 min read",
+  "file": "alternatedata-article.md"
+}
+  {
+    "slug": "neobanks-same-wheel",
+    "title": "Why Neobanks Keep Reinventing the Same Wheel",
+    "excerpt": "Every generation of fintech promises to unbundle the bank. Most of them end up rebuilding it, one feature at a time.",
+    "category": "Fintech & Policy",
+    "date": "2026-03-10",
+    "readTime": "6 min read",
+    "file": "neobanks-same-wheel.md"
+  }
+]
