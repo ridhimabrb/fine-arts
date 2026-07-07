@@ -120,17 +120,26 @@ h1, h2, h3, .serif {
   color: var(--color-pebble);
   margin: 0 0 12px;
 }
-.byline {
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-    font-size:.95rem;
-    color:rgba(255,255,255,.75);
+.byline{
+    margin-bottom: 2rem;
+    font-family: "Inter", "Avenir Next", sans-serif;
 }
 
-.byline span{
+.author-name{
+    margin:0;
+    font-size:1.1rem;
     font-weight:600;
-    color:#fff;
+    color:#f5f2ea;
+    letter-spacing:.02em;
+}
+
+.author-role{
+    margin-top:.18rem;
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:rgba(255,255,255,.6);
+    font-weight:500;
 }
 .lead {
   font-family: var(--font-the-future);
@@ -279,7 +288,7 @@ h1, h2, h3, .serif {
 
 .hero {
   background: var(--color-bronze-field);
-  padding: 96px 0 100px;
+  padding: 44px 0 100px;
   position: relative;
   overflow: hidden;
 }
