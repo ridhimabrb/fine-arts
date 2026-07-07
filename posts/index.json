@@ -27,14 +27,14 @@
     "file": "dcf-valuation-primer.md"
   },
 {
-  "slug": "why-fintech-needs-trust",
-  "title": "Why Fintech Needs Trust Before Innovation",
-  "excerpt": "Everyone wants the next disruptive finance app. Few companies realize trust is still the product.",
-  "category": "Fintech & Policy",
+  "slug": "alternate-data-in-finance",
+  "title": "How Hedge Funds Use Satellite Images to Predict Earnings",
+  "excerpt": "I came across a video showing a satellite image of a Walmart parking lot. At first glance it looked completely unremarkable.",
+  "category": "Quant",
   "date": "2026-04-21",
-  "readTime": "7 min read",
+  "readTime": "9 min read",
   "file": "alternatedata-article.md"
-}
+},
   {
     "slug": "neobanks-same-wheel",
     "title": "Why Neobanks Keep Reinventing the Same Wheel",
