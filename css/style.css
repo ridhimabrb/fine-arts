@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Fine Arts : Finance Articles for you
+   Ledger & Ribbon — a fintech reading archive
    Design tokens ported 1:1 from the supplied style reference.
    Tiempos -> Source Serif 4 · The Future -> Inter · Wealthsimple Sans -> Inter (tracked)
    ========================================================================== */
@@ -37,7 +37,7 @@
   --text-heading-lg: 56px;
   --leading-heading-lg: 1.1;
   --tracking-heading-lg: -0.56px;
-  --text-display: 70px;
+  --text-display: 84px;
   --leading-display: 1.08;
   --tracking-display: -0.84px;
 
@@ -64,6 +64,19 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+
+@keyframes float-ribbon {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1.2deg); }
+}
+@keyframes float-cards {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
 
 body {
   margin: 0;
@@ -132,28 +145,30 @@ h1, h2, h3, .serif {
   border: 1px solid transparent;
   cursor: pointer;
   white-space: nowrap;
-  transition: opacity 0.15s ease, background-color 0.15s ease;
+  transition: opacity 0.18s ease, background-color 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
 }
+.pill:hover { transform: translateY(-2px); }
+.pill:active { transform: translateY(0); }
 
 .pill-filled {
   background: var(--color-charcoal);
   color: var(--color-paper-white);
 }
-.pill-filled:hover { opacity: 0.85; }
+.pill-filled:hover { opacity: 0.88; }
 
 .pill-outline {
   background: transparent;
   border-color: var(--color-graphite-ink);
   color: var(--color-graphite-ink);
 }
-.pill-outline:hover { background: var(--color-fog-veil); }
+.pill-outline:hover { background: var(--color-graphite-ink); color: var(--color-paper-white); }
 
 .pill-outline-onlight {
   background: transparent;
   border-color: var(--color-paper-white);
   color: var(--color-paper-white);
 }
-.pill-outline-onlight:hover { background: rgba(252,252,252,0.1); }
+.pill-outline-onlight:hover { background: var(--color-paper-white); color: var(--color-bronze-field); }
 
 .pill-ghost {
   background: var(--color-linen-cream);
@@ -227,10 +242,23 @@ h1, h2, h3, .serif {
   gap: 32px;
 }
 .main-nav a {
+  position: relative;
   font-size: 16px;
   color: var(--color-graphite-ink);
+  padding-bottom: 2px;
 }
-.main-nav a:hover { color: var(--color-pebble); }
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-graphite-ink);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.main-nav a:hover::after { transform: scaleX(1); }
 
 .header-ctas { display: flex; gap: 12px; align-items: center; }
 
@@ -251,15 +279,25 @@ h1, h2, h3, .serif {
   align-items: center;
 }
 .hero-copy .eyebrow { color: rgba(252,252,252,0.7); }
-.hero-copy h3 { color: var(--color-paper-white); }
+.hero-copy h1 { color: var(--color-paper-white); }
 .hero-copy p.lead { color: rgba(252,252,252,0.82); margin-top: 20px; max-width: 46ch; }
 .hero-ctas { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
-.hero-copy h1 {
-    color: var(--color-paper-white);
-    font-size: clamp(3.5rem, 6vw, 5rem);
-}
+
 .hero-art { display: flex; justify-content: center; align-items: center; }
-.hero-art svg { width: 100%; height: auto; max-width: 460px; }
+.hero-art svg { width: 100%; height: auto; max-width: 460px; overflow: visible; }
+.hero-art .ribbon-group { animation: float-ribbon 7s ease-in-out infinite; transform-origin: 230px 230px; }
+.hero-art .cards-group { animation: float-cards 6s ease-in-out infinite; }
+
+/* Scroll-reveal utility — toggled by IntersectionObserver in site.js */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ---------- Sections ---------- */
 
@@ -292,13 +330,15 @@ h1, h2, h3, .serif {
 .feature-col {
   padding-top: 16px;
   border-top: 1px solid var(--color-stone);
+  transition: border-color 0.3s ease;
 }
+.feature-col:hover { border-top-color: var(--color-graphite-ink); }
 .feature-col h3 {
   font-family: var(--font-the-future);
   font-weight: 500;
   font-size: var(--text-heading-sm);
   line-height: var(--leading-heading-sm);
-  color: var(--color-white-ink);
+  color: var(--color-graphite-ink);
   margin-bottom: 10px;
 }
 .feature-col p { color: var(--color-graphite-ink); font-size: 15px; }
@@ -310,10 +350,14 @@ h1, h2, h3, .serif {
   grid-template-columns: 110px 1fr auto;
   gap: 24px;
   align-items: baseline;
-  padding: 28px 0;
+  padding: 28px 24px;
+  margin: 0 -24px;
   border-top: 1px solid var(--color-stone);
+  border-radius: var(--radius-small);
+  transition: background-color 0.25s ease;
 }
 .article-list .article-row:last-child { border-bottom: 1px solid var(--color-stone); }
+.article-row:hover { background: var(--color-linen-cream); }
 .article-row .date {
   font-size: 13px;
   color: var(--color-pebble);
@@ -331,6 +375,7 @@ h1, h2, h3, .serif {
   line-height: 1.25;
   font-weight: 500;
   letter-spacing: -0.01em;
+  transition: color 0.2s ease;
 }
 .article-row .excerpt {
   color: var(--color-pebble);
@@ -338,7 +383,17 @@ h1, h2, h3, .serif {
   max-width: 62ch;
   margin-top: 6px;
 }
-.article-row a.title-link:hover { color: var(--color-pebble); }
+.article-row a.title-link { display: inline-flex; align-items: baseline; gap: 10px; }
+.article-row a.title-link::after {
+  content: "→";
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-family: var(--font-the-future);
+  font-size: 18px;
+}
+.article-row:hover a.title-link::after { opacity: 1; transform: translateX(0); }
+.article-row:hover h3 { color: var(--color-bronze-field); }
 .article-row .read-time {
   font-size: 13px;
   color: var(--color-pebble);
@@ -365,7 +420,9 @@ h1, h2, h3, .serif {
   background: transparent;
   color: var(--color-graphite-ink);
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
+.filter-btn:hover { border-color: var(--color-graphite-ink); transform: translateY(-1px); }
 .filter-btn[aria-pressed="true"] {
   background: var(--color-charcoal);
   border-color: var(--color-charcoal);
@@ -480,9 +537,11 @@ h1, h2, h3, .serif {
 /* loading / skeleton */
 .skeleton-line {
   height: 14px;
-  background: var(--color-fog-veil);
   border-radius: 8px;
   margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--color-fog-veil) 25%, var(--color-stone) 37%, var(--color-fog-veil) 63%);
+  background-size: 400px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
 }
 
 /* ---------- Responsive ---------- */

@@ -6,9 +6,26 @@ const POSTS_INDEX = 'posts/index.json';
 
 /** Fetch and parse posts/index.json. Sorted newest first. */
 async function loadPosts() {
-  const res = await fetch(POSTS_INDEX, { cache: 'no-store' });
-  if (!res.ok) throw new Error('Could not load posts/index.json');
-  const posts = await res.json();
+  let res;
+  try {
+    res = await fetch(POSTS_INDEX, { cache: 'no-store' });
+  } catch (networkErr) {
+    throw new Error(
+      `Network error fetching ${POSTS_INDEX}. If you're opening this file directly ` +
+      `(double-clicking index.html), browsers block that — view it via your GitHub Pages ` +
+      `URL or a local server instead.`
+    );
+  }
+  if (!res.ok) {
+    throw new Error(`${POSTS_INDEX} returned HTTP ${res.status}. Check the file exists at posts/index.json in your repo.`);
+  }
+  const text = await res.text();
+  let posts;
+  try {
+    posts = JSON.parse(text);
+  } catch (parseErr) {
+    throw new Error(`posts/index.json has invalid JSON: ${parseErr.message}. Check for a trailing comma or missing quote.`);
+  }
   return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
@@ -44,6 +61,24 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function initScrollReveal() {
+  const targets = document.querySelectorAll('.reveal');
+  if (!targets.length) return;
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach(t => t.classList.add('is-visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  targets.forEach(t => io.observe(t));
+}
+
 function initMobileNav() {
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.main-nav');
@@ -62,7 +97,7 @@ async function initHome() {
     const posts = await loadPosts();
     renderArticleList(el, posts.slice(0, 4));
   } catch (e) {
-    el.innerHTML = `<div class="empty-state">Couldn't load articles right now.</div>`;
+    el.innerHTML = `<div class="empty-state">Couldn't load articles: ${escapeHtml(e.message)}</div>`;
     console.error(e);
   }
 }
@@ -95,7 +130,7 @@ async function initArchive() {
 
     renderArticleList(el, posts);
   } catch (e) {
-    el.innerHTML = `<div class="empty-state">Couldn't load articles right now.</div>`;
+    el.innerHTML = `<div class="empty-state">Couldn't load articles: ${escapeHtml(e.message)}</div>`;
     console.error(e);
   }
 }
@@ -149,6 +184,7 @@ async function initArticle() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
+  initScrollReveal();
   initHome();
   initArchive();
   initArticle();
