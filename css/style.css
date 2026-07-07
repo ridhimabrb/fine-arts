@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Ledger & Ribbon — a fintech reading archive
+   Fine Arts - By Ridhima Pant
    Design tokens ported 1:1 from the supplied style reference.
    Tiempos -> Source Serif 4 · The Future -> Inter · Wealthsimple Sans -> Inter (tracked)
    ========================================================================== */
@@ -581,4 +581,12 @@ h1, h2, h3, .serif {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { transition: none !important; animation: none !important; }
+}
+
+.byline .author-name{
+    color: #dcedc8 !important;
+}
+
+.byline .author-role{
+    color: #dcedc8 !important;
 }
