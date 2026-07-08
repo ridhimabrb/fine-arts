@@ -6,7 +6,7 @@
     "category": "Markets",
     "date": "2026-07-02",
     "readTime": "6 min read",
-    "file": "understanding-duration-risk.md"
+    "file": "duration-risk.md"
   },
   {
     "slug": "yield-curve-inversions",
@@ -15,7 +15,7 @@
     "category": "Markets",
     "date": "2026-06-18",
     "readTime": "4 min read",
-    "file": "yield-curve-inversions.md"
+    "file": "yield.md"
   },
   {
     "slug": "dcf-valuation-primer",
@@ -24,7 +24,7 @@
     "category": "Portfolio Theory",
     "date": "2026-05-27",
     "readTime": "5 min read",
-    "file": "dcf-valuation-primer.md"
+    "file": "dcf.md"
   },
 {
   "slug": "alternate-data-in-finance",
@@ -42,6 +42,6 @@
     "category": "Fintech & Policy",
     "date": "2026-03-10",
     "readTime": "6 min read",
-    "file": "neobanks-same-wheel.md"
+    "file": "neobanks.md"
   }
 ]
